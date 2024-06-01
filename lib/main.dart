@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lifemeter/providers/lifemeterprovider.dart';
 import 'package:lifemeter/screens/home/home_screen.dart';
 import 'package:lifemeter/screens/setting/setting_screen.dart';
@@ -11,6 +12,7 @@ void main(List<String> args) {
       child: const LifeMeter(),
     ),
   );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class LifeMeter extends StatelessWidget {

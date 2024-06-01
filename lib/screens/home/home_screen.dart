@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lifemeter/screens/setting/setting_screen.dart';
+import 'package:lifemeter/screens/home/widgets/life_progress.dart';
+import 'package:lifemeter/screens/home/widgets/remaining_days.dart';
+import 'package:lifemeter/screens/home/widgets/remaining_time.dart';
+import 'package:lifemeter/screens/home/widgets/setting_button.dart';
+
 import 'package:lifemeter/screens/shared/widgets/header.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,28 +11,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         children: [
-          Stack(children: [
-            Header(),
-            Positioned(
-                right: MediaQuery.of(context).size.width * 0.05,
-                top: MediaQuery.of(context).size.height * 0.05,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingScreen()),
-                    );
-                  },
-                ))
-          ])
+          Stack(children: [Header(), SettingButton()]),
+          RemainingDays(),
+          SizedBox(height: 10),
+          LifeProgress(),
+          SizedBox(height: 10),
+          RemainingTime()
         ],
       ),
     );

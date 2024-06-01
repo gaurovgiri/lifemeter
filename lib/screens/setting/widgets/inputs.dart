@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifemeter/constants/expectancy.dart';
 import 'package:lifemeter/providers/lifemeterprovider.dart';
 import 'package:lifemeter/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -11,13 +12,7 @@ class Inputs extends StatefulWidget {
 }
 
 class _InputsState extends State<Inputs> {
-  final List<String> countries = [
-    'Nepal',
-    'India',
-    'USA',
-    'Canada',
-    'Australia'
-  ];
+  final List<String> countries = countryLifeExpectancy.keys.toList();
 
   @override
   Widget build(BuildContext context) {
@@ -38,24 +33,29 @@ class _InputsState extends State<Inputs> {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          width: double
-              .infinity, // Makes the dropdown take the full width of its parent
-          child: DropdownButton<String>(
-            value: provider.country,
-            isExpanded: true, // Dropdown button expands to fill the container
-            onChanged: (newValue) {
-              if (newValue != null) {
-                provider.setData(newValue, provider.dob);
-              }
-            },
-            items: countries.map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
+        Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            width: MediaQuery.of(context).size.width * 0.92,
+            child: DropdownButton<String>(
+              value: provider.country,
+              isExpanded: true,
+              onChanged: (newValue) {
+                if (newValue != null) {
+                  provider.setData(newValue, provider.dob);
+                }
+              },
+              items: countries.map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
           ),
         ),
         const SizedBox(height: 20),
@@ -70,22 +70,28 @@ class _InputsState extends State<Inputs> {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          width: double.infinity,
-          child: TextButton(
-            onPressed: () => _selectDate(context, provider),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    provider.dob,
-                    style: const TextStyle(color: Colors.black54),
+        Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            width: MediaQuery.of(context).size.width * 0.92,
+            child: TextButton(
+              onPressed: () => _selectDate(context, provider),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      provider.dob,
+                      style: const TextStyle(color: Colors.black),
+                    ),
                   ),
-                ),
-                const Icon(Icons.calendar_today), // Calendar icon
-              ],
+                  const Icon(Icons.calendar_today),
+                ],
+              ),
             ),
           ),
         ),
@@ -101,7 +107,7 @@ class _InputsState extends State<Inputs> {
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(75),
-                color: const Color(0xFF2DB073), // Same color as oval
+                color: const Color(0xFF2DB073),
               ),
               child: const Center(
                 child: Text(
@@ -136,7 +142,7 @@ class _InputsState extends State<Inputs> {
 
   void _navigateToHome(BuildContext context) {
     final provider = Provider.of<LifeMeterProvider>(context, listen: false);
-    provider.notify();
+    provider.setTrue();
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const HomeScreen()),
