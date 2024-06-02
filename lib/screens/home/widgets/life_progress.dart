@@ -3,7 +3,7 @@ import 'package:lifemeter/providers/lifemeterprovider.dart';
 import 'package:provider/provider.dart';
 
 class LifeProgress extends StatelessWidget {
-  const LifeProgress({Key? key});
+  const LifeProgress({super.key});
 
   @override
   Widget build(BuildContext context) {

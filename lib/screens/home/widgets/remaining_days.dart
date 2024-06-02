@@ -21,7 +21,7 @@ class RemainingDays extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -43,7 +43,7 @@ class RemainingDays extends StatelessWidget {
                     // Fill text
                     Text(
                       '${value.remainingDays}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Montserrat",
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class RemainingDays extends StatelessWidget {
                     // Fill text
                     Text(
                       ' / ${value.totalDays}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Montserrat",
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

@@ -11,10 +11,10 @@ class SettingScreen extends StatelessWidget {
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: Column(
+        child: const Column(
           children: [
-            const Header(),
-            const Text(
+            Header(),
+            Text(
               "Settings",
               style: TextStyle(
                   fontFamily: 'Montserrat',

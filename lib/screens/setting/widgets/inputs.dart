@@ -5,7 +5,7 @@ import 'package:lifemeter/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class Inputs extends StatefulWidget {
-  Inputs({super.key});
+  const Inputs({super.key});
 
   @override
   _InputsState createState() => _InputsState();

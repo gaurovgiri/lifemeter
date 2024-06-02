@@ -3,7 +3,7 @@ import 'package:lifemeter/providers/lifemeterprovider.dart';
 import 'package:provider/provider.dart';
 
 class RemainingTime extends StatelessWidget {
-  const RemainingTime({Key? key});
+  const RemainingTime({super.key});
 
   @override
   Widget build(BuildContext context) {
